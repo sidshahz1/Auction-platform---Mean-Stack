@@ -1,0 +1,26 @@
+<form #signUpForm="ngForm" (ngSubmit)='onSubmit(signUpForm)'>
+    <input type="text" #fullName="ngModel" [(ngModel)]="userservice.selecteduser.fullname" name="fullname" placeholder="enter full name">
+    <input type="text" #email="ngModel" [(ngModel)]="userservice.selecteduser.email" name="email" placeholder="enter email id">
+    <input type="password" #password="ngModel" [(ngModel)]="userservice.selecteduser.password" name="password" placeholder="enter password">
+    <input type="submit" value="signup">
+</form>
+
+<div *ngIf="successMessage">
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>phone no</mat-label>
+        <input type="number" matInput #phone>
+    </mat-form-field>
+    <button (click)="verifyPhoneNo(phone.value)">verify phone no</button>
+</div>
+
+<div *ngIf="otpTab">
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>phone no</mat-label>
+        <input type="number" matInput #otp>
+    </mat-form-field>
+    <button (click)="verifyOTP(otp.value)">verify otp</button>
+</div>
+
+<div *ngIf="errorMessage">
+    {{errorMessage}}
+</div>

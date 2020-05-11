@@ -1,0 +1,42 @@
+<form class="example-form" #form="ngForm" enctype="multipart/form-data">
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Product name</mat-label>
+        <input matInput #name>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Product category</mat-label>
+        <mat-select #selectedcategory>
+            <mat-option *ngFor="let category of catergoriesdata" [value]="category.cid">
+              {{category.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Product details</mat-label>
+        <textarea matInput #details></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Product price</mat-label>
+        <input type="number" matInput #price>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="addproduct(name.value,selectedcategory.value,details.value,price.value)">proceed</button>
+</form>
+
+
+<!-- <button (click)="display()">get image</button> -->
+
+<div>
+    <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(image)"
+     alt="Place image title"
+     *ngIf="image">
+</div>
+
+<div *ngIf="successmessage">
+    {{successmessage}}
+</div>
+
+<div *ngIf="errormessage">
+    {{errormessage}}
+</div>

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>please upload image for your product with product id- {{data.pid}}</h1>
+<div mat-dialog-content>
+    choose image
+    <br>  
+    <input type="file" (change)="onFileSelected($event)">
+    <div *ngIf="imageerror"> please select image </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onUpload()" *ngIf="selectedfile" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onUpload()" *ngIf="!selectedfile" disabled >Ok</button>
+</div>

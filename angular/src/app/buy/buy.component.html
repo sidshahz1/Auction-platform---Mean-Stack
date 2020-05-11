@@ -1,0 +1,41 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let category of categoriesdata" (opened)="getdetails(category.cid)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{category.cid}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{category.name}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      {{selectedcategory}} 
+
+      <mat-card class="example-card" *ngFor="let product of selectedproducts">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-subtitle>{{countdown(product.timestamp).days}}-days {{countdown(product.timestamp).hours}}-hours {{countdown(product.timestamp).minutes}}-minutes {{countdown(product.timestamp).seconds}}-seconds</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="http://localhost:3000/product/getimage/{{product.image}}" alt="Photo of {{product.name}}">
+          <mat-card-content>
+            <p>
+              {{product.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-content>
+            <p>
+              Price- {{product.price}}
+            </p>
+          </mat-card-content>
+          <mat-card-content>
+            <p>
+              Last Bid- {{product.lastBid}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>{{product.currentBid}}</button>
+            <button mat-button (click)="placeBid(product._id,category.cid)">Bid</button>
+          </mat-card-actions>
+      </mat-card>
+      </mat-expansion-panel>
+  </mat-accordion>

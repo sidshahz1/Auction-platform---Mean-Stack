@@ -1,0 +1,41 @@
+<table *ngIf="userdetails">
+    <thead>
+        <tr>
+            <th colspan="2">user profike</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name</td>
+            <td>{{userdetails.fullname}}</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>{{userdetails.email}}</td>
+        </tr>
+        <tr>
+            <td>available credits</td>
+            <td>{{userdetails.credits}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" (click)="onlogout()" value="logout">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="invalidError" style="color:red">
+    {{ invalidError.message }}
+  </div>
+
+  <stripe-card
+  #stripeCard
+  (catch) = "onStripeError($event)"
+  [(invalid)] = "invalidError"
+  (tokenChange) = "setStripeToken($event)"
+  (sourceChange) = "setStripeSource($event)"
+></stripe-card>
+
+<button type="button" (click)="stripeCard.createToken(extraData)">createToken</button>
+
