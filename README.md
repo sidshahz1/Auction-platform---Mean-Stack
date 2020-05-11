@@ -1,6 +1,6 @@
 # Auction-platform---Mean-Stack
 
-to run the application
+to run the application<br>
 open 2 terminals one for node and one for angular
 use npm install for both to get all the dependencies
 use node app.js to run the node server
