@@ -33,9 +33,9 @@ app.use('/bid',require('./routes/bid'));
 app.use('/help',require('./routes/help'));
 
 
-const port= process.env.port || 8080;
 
-const server= app.listen(port,()=>console.log("server is running....")); 
+
+const server= app.listen(3000,()=>console.log("server is running....")); 
 
 var io= require('socket.io').listen(server);
 
