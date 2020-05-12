@@ -8,10 +8,10 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class UserService {
 
-  url1="http://localhost:3000/user";
-  url2="http://localhost:3000/product";
-  url3="http://localhost:3000/bid";
-  url4="http://localhost:3000/help";
+  url1="user";
+  url2="product";
+  url3="bid";
+  url4="help";
 
   selecteduser: User={
     fullname:'',
